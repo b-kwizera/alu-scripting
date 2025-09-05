@@ -10,15 +10,16 @@ end
 input_string = ARGV[0]
 
 # Define the regular expression pattern
-# TODO: Replace this with the actual pattern based on your requirements
-pattern = /YOUR_REGEX_PATTERN_HERE/
+# Matches 'h' followed by 0 or 1 'b', then 'tn'
+pattern = /hb?tn/
 
 # Find all matches
 matches = input_string.scan(pattern)
 
 # Output the matches
 if matches.empty?
-  puts "No matches found"
+  # For the case where no matches are found, just output empty line
+  puts ""
 else
   matches.each do |match|
     puts match
