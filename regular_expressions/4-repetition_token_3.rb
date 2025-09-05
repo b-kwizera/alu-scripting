@@ -11,8 +11,8 @@ input_string = ARGV[0]
 
 # Define the regular expression pattern
 # Note: No square brackets allowed in this regex
-# TODO: Replace with actual pattern based on test cases
-pattern = /PATTERN_HERE/
+# Matches 'h' followed by 'b', then one or more 't', then 'n'
+pattern = /hbt+n/
 
 # Find all matches
 matches = input_string.scan(pattern)
