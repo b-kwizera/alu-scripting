@@ -6,3 +6,4 @@
 5-beginning_and_end.rb: Regex script that matches strings starting with h, ending with n, and exactly one character in between
 6-phone_number.rb: Regex script that matches exactly 10-digit phone numbers
 7-OMG_WHY_ARE_YOU_SHOUTING.rb: Regex script to extract only uppercase letters from a string
+8-textme.rb: Regex script to extract sender, receiver, and flags from a TextMe SMS log line
