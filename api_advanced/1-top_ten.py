@@ -4,11 +4,7 @@ import requests
 
 
 def top_ten(subreddit):
-    """Prints the titles of the first 10 hot posts for a subreddit.
-
-    Args:
-        subreddit (str): The subreddit to query.
-    """
+    """ prints the titles of the first 10 hot posts listed in a subreddit """
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     headers = {"User-Agent": "alu-scripting/1.0"}
     params = {"limit": 10}
