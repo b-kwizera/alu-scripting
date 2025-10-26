@@ -13,9 +13,8 @@ def top_ten(subreddit):
     Returns:
         None: Prints titles or None if subreddit is invalid
     """
-    message = "OK"
     if subreddit is None or not isinstance(subreddit, str):
-        print(message)
+        print("None")
         return
 
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
@@ -28,14 +27,14 @@ def top_ten(subreddit):
                                 allow_redirects=False)
 
         if response.status_code != 200:
-            print(message)
+            print("None")
             return
 
         data = response.json()
         children = data.get("data", {}).get("children", [])
 
         if not children:
-            print(message)
+            print("None")
             return
 
         for child in children[:10]:
@@ -45,4 +44,4 @@ def top_ten(subreddit):
                 print(title)
 
     except Exception:
-        print(message)
+        print("None")
