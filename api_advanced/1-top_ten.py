@@ -13,35 +13,30 @@ def top_ten(subreddit):
     Returns:
         None: Prints titles or None if subreddit is invalid
     """
-    if subreddit is None or not isinstance(subreddit, str):
+    if not subreddit or not isinstance(subreddit, str):
         print("None")
         return
 
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     headers = {
-        "User-Agent": "python-requests/2.22.0"
+        "User-Agent": "MyRedditApp/0.1"
     }
 
     try:
-        response = requests.get(url, headers=headers,
-                                allow_redirects=False)
+        response = requests.get(url, headers=headers, allow_redirects=False)
 
-        if response.status_code != 200:
+        if response.status_code == 200:
+            data = response.json()
+            posts = data.get("data", {}).get("children", [])
+
+            if posts:
+                for post in posts:
+                    title = post.get("data", {}).get("title")
+                    print(title)
+            else:
+                print("None")
+        else:
             print("None")
-            return
-
-        data = response.json()
-        children = data.get("data", {}).get("children", [])
-
-        if not children:
-            print("None")
-            return
-
-        for child in children[:10]:
-            post_data = child.get("data", {})
-            title = post_data.get("title")
-            if title:
-                print(title)
 
     except Exception:
         print("None")
